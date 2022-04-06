@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: Algoritmosnumericos
+Version: 0.1.7
+Summary: maths algorithms and util funtion for plot numerical methods
+Home-page: https://github.com/Ratabart666
+Author: Thomas Gomez
+Author-email: t.gomezs2@uniandes.edu.co
+License: MIT
+Keywords: numerical methods
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+License-File: LICENCE.txt
+
+Numerical Algorithms 0.1.7
+
+This library have very strongs Algorithms
+you should import as follow import Algoritmosnumericos as Alg
+and if you wish to know  the funtions only write (help(Alg))
+
+
+Change Log
+==========
+
+0.1.7 (06/04/2022)
+-------------------
+-- Corrections
+
+
