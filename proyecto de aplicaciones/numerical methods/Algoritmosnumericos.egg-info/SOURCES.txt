@@ -1,0 +1,11 @@
+CHANGELOG.txt
+LICENCE.txt
+MANIFEST.in
+README.txt
+setup.py
+Algoritmosnumericos/__init__.py
+Algoritmosnumericos.egg-info/PKG-INFO
+Algoritmosnumericos.egg-info/SOURCES.txt
+Algoritmosnumericos.egg-info/dependency_links.txt
+Algoritmosnumericos.egg-info/requires.txt
+Algoritmosnumericos.egg-info/top_level.txt
