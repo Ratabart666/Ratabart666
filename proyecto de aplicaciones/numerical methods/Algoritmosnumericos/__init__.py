@@ -48,7 +48,6 @@ def interpolacionlagrange(x,X,Y):
         auxiliar=[]
     return sumatoria(polinomios_x)
 
-
 def derivada_numerica1(x_values,y_values,loc):
     '''Ingresados los valores de x(equisdistantes),los valores de y,y la localizacion de un
         punto en x, retorna la derivada numerica en ese punto.
@@ -274,6 +273,7 @@ def integral_riemann_funciondes(X,Y,loc1,loc2):
         I+=Y[i]*Δx
     return I
 
+
 def integral_trapecio_funciondes(X,Y,loc1,loc2):
     '''Ingresada una serie de datos, los limites de integracion(1000 particiones) devuelve la integral numerica(trapecio) aproximada(No elija como intervalo superior el ultimo datos en X)
         Parametros:
@@ -309,6 +309,17 @@ def matriz_vacia(n,m):
              j.append(0)
     return vacia
 
+def vector_vacio(n):
+    '''Dado un numero n, devuelve con un vector de dimension n con todas las entradas iguales a 0
+        Parametros:
+            n: numero de entradas
+        Retorno:
+           Vector: con n entradas y entradas iguales a 0'''
+    aux=[]
+    for i in range(n):
+        aux.append(0)
+    return [aux]
+
 def print_matriz(matriz):
     '''Imprime la matriz de manera organizada
     '''
@@ -326,17 +337,16 @@ def columnaj(matriz,j):
         retorna esta columna
     Parametros: 
         matriz: matriz deseada
-        m: columna deseada(la primera columna es 1)
+        m: columna deseada(la primera columna es 0)
     Retorno:
         columna deseada
     '''
-    j=j-1
     columna=[]
     for i in range(0,len(matriz)):
         columna.append(matriz[i][j])
-    return columna
+    return [columna]
 
-def producto_punto(vector1,vector2):
+def auxproducto(vector1,vector2):
     '''Ingresados 2 vectores
         retorna su producto punto
     Parametros: 
@@ -365,38 +375,7 @@ def suma(matriz1,matriz2):
             suma[i][j]=matriz1[i][j]+matriz2[i][j]
     return suma
 
-def resta(matriz1,matriz2):
-    '''Ingresados 2 Matrices
-        retorna su resta
-    Parametros: 
-        matriz1: Matriz 1
-        matriz2: Matriz 2
-    Retorno:
-        Retorna Matriz 1 - Matriz 2
-    '''
-    resta=matriz_vacia(len(matriz1),len(matriz1[0]))
-    for i in range(0,len(matriz1)):
-        for j in range(0,len(matriz1[0])):
-            resta[i][j]=matriz1[i][j]-matriz2[i][j]
-    return resta
-
-def producto(matriz1,matriz2):
-    '''Ingresados 2 Matrices
-        retorna su producto
-    Parametros: 
-        matriz1: Matriz 1
-        matriz2: Matriz 2
-    Retorno:
-        Retorna Matriz 1*Matriz 2
-    '''
-    
-    producto=matriz_vacia(len(matriz1),len(matriz2[0]))
-    for i in range(0,len(matriz1)):
-        for j in range(0,len(matriz2[0])):
-            producto[i][j]=producto_punto(matriz1[i],columnaj(matriz2,j+1))
-    return producto
-    
-def productoescalarmatriz(matriz,c):
+def escalarmatriz(matriz,c):
     '''Ingresados 1 Matriz y un escalar
         retorna el producto
     Parametros: 
@@ -411,49 +390,84 @@ def productoescalarmatriz(matriz,c):
                 new[i][j]=(matriz[i][j])*c
     return new
 
+def resta(matriz1,matriz2):
+    '''Ingresados 2 Matrices
+        retorna su resta
+    Parametros: 
+        matriz1: Matriz 1
+        matriz2: Matriz 2
+    Retorno:
+        Retorna Matriz 1 - Matriz 2
+    '''
+    return suma(matriz1,escalarmatriz(matriz2,-1))
+
+def producto(matriz1,matriz2):
+    '''Ingresados 2 Matrices
+        retorna su producto
+    Parametros: 
+        matriz1: Matriz 1
+        matriz2: Matriz 2
+    Retorno:
+        Retorna Matriz 1*Matriz 2
+    '''
+    if (len(matriz1)==1 and len(matriz1[0])!=1 and len(matriz2)==1):
+        aux1=matriz1[0]
+        aux2=matriz2[0]
+        return auxproducto(aux1,aux2)
+    
+    if len(matriz1)!=1 and len(matriz2)==1:#El número de columnas de la primera matriz debe coincidir con el número de filas de la segunda matriz.
+        sumatoria=vector_vacio(len(matriz1))
+        for i in range(len(matriz1)):
+            sumatoria[0][i]=auxproducto(matriz1[i],matriz2[0])
+        return sumatoria
+    if len(matriz1)==1 and len(matriz2)!=1:
+        sumatoria=vector_vacio(len(matriz2[0]))
+        for i in range(len(matriz2[0])):
+            sumatoria[0][i]=auxproducto(matriz1[0],columnaj(matriz2,i)[0])
+        return sumatoria
+    if len(matriz1)==1 and len(matriz1[0])==1 and len(matriz2)==1:
+        return escalarmatriz(matriz2,matriz1[0][0])
+    else:
+        producto=matriz_vacia(len(matriz1),len(matriz2[0]))
+        for i in range(0,len(matriz1)):
+            for j in range(0,len(matriz2[0])):
+                producto[i][j]=auxproducto(matriz1[i],columnaj(matriz2,j)[0])
+        return producto
+    
 def eliminarfilai(matriz,i):
     '''Ingresados 1 Matriz y una fila 
         retorna la matriz sin la fila
     Parametros: 
         matriz1: Matriz 1
-        i: Fila deseada(la primera fila es 1)
+        i: Fila deseada(la primera fila es 0)
     Retorno:
         Matriz sin la fila i
     '''
-    i=i-1
-    new=[]
-    for k in range(0,len(matriz)):
-        if k!=i:
-             new.append(matriz[k])
-    return new
+    del(matriz[i])
+    return matriz
 
 def eliminarcolumnaj(matriz,j):
     '''Ingresados 1 Matriz y una columna
         retorna la matriz sin la columna
     Parametros: 
         matriz1: Matriz 1
-        j: Columna deseada(la primera columna es 1)
+        j: Columna deseada(la primera columna es 0)
     Retorno:
         Matriz sin la Columna j
     '''
-    j=j-1
-    new=[]
-    aux=[]
     for i in range(0,len(matriz)):
         for k in range(0,len(matriz[0])):
-            if k!=j:
-                aux.append(matriz[i][k])
-        new.append(aux)
-        aux=[]
-    return new
+            if k==j:
+                del(matriz[i][k]) 
+    return matriz
 
 def eliminar_filai_columnaj(matriz,i,j):
     '''Ingresados 1 Matriz,una fila y una columna
         retorna la matriz sin la fila y la columna
     Parametros: 
         matriz1: Matriz 1
-        i: Fila deseada (la primera fila es 1)
-        j: Columna deseada (la primera columna es 1)
+        i: Fila deseada (la primera fila es 0)
+        j: Columna deseada (la primera columna es 0)
     Retorno:
         Matriz sin la fila i y la columna j
     '''
@@ -473,55 +487,20 @@ def transpuesta(A):
             B[j][i]=A[i][j]   
     return B
 
-def multiplicar_vector_por_escalar(vector,c):
-    '''Dada un vector y un escalar c, los multiplica
-      Parametros:
-            vector: vector
-            c: escalar
-        Retorno:
-            vector por escalar'''
-    
-    new=[]
-    for i in vector:
-        new.append(c*i)
-    return new
-   
-def restar_vectores(vector1,vector2):
-    '''Dado 2 vectores,devuelve su resta
-      Parametros:
-            vector1: vector
-            vector2: escalar
-        Retorno:
-            vector 1-vector 2'''
-    new=[]
-    for i in range(len(vector1)):
-        new.append(vector1[i]-vector2[i])
-    return new
-
-def sumar_vectores(vector1,vector2):
-    '''Dado 2 vectores,devuelve su suma
-      Parametros:
-            vector1: vector
-            vector2: escalar
-        Retorno:
-            vector 1+vector 2'''
-    new=[]
-    for i in range(len(vector1)):
-        new.append(vector1[i]+vector2[i])
-    return new
-
 def magnitud_vector(vector):
     '''Dado un vector retorna su norma
         Parametros:
             vector: vector
         Retorno
             Norma del vector'''
+    vector=vector[0]
     norma=0
     for i in vector:
         norma+=i**2
     return (norma)**(1/2)
 
 import numpy as np
+
 def angulo_vectores(vector1,vector2):
     '''Dado 2 vectores, devuelve el angulo entre ellos
         Parametros:
@@ -529,53 +508,9 @@ def angulo_vectores(vector1,vector2):
             vector 2: vector
         Retorno:
             Angulo entre ellos(grados)'''
-    costetha=(producto_punto(vector1,vector2))/(magnitud_vector(vector1)*magnitud_vector(vector2))
+    costetha=(producto(vector1,vector2))/(magnitud_vector(vector1)*magnitud_vector(vector2))
     tetha=np.arccos(costetha)
     return np.degrees(tetha)
-
-def triangular_superior(A):
-    '''Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular superior, no debe haber 0's en la diagonal
-        Parametros:
-            A:matriz
-        Retorno:
-            Matriz en forma triangular superior'''
-    B=A
-    rows=len(A)
-    aux=None
-    for i in range(rows):
-        for j in range(i+1,rows):
-            aux=multiplicar_vector_por_escalar(B[i],( B[j][i]/B[i][i] ) )
-            B[j]=restar_vectores(B[j],aux)
-    return B
-
-def triangular_inferior(A):
-    '''Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular inferior
-        Parametros:
-            A:matriz
-        Retorno:
-            Matriz en forma triangular inferior'''
-    B=A
-    rows=len(A)
-    aux=None
-    for i in range(rows-1,-1,-1):
-        for j in range(i-1,-1,-1):
-            aux=multiplicar_vector_por_escalar(B[i],( B[j][i]/B[i][i] ) )
-            B[j]=restar_vectores(B[j],aux)
-    return B
-
-def red_gauss(A):
-    '''Dada una matriz A que representa un sistema de ecuaciones lineales,aplica el algoritmo de reduccion de gauss
-        primero la convierte en una matriz triangular superior y despues en una matriz diagonal donde las soluciones son explicitas
-        (La matriz debe tener tamano nx(n+1)) y las diagonales deben ser diferentes de 0
-        Parametros:
-            A:matriz
-        Retorno:
-            Solucion sistemas de ecuaciones lineales'''
-    B=triangular_superior(A)
-    B=triangular_inferior(B)
-    for i in range(len(B)):
-        B[i]=multiplicar_vector_por_escalar(B[i],1/(B[i][i]))
-    return B
 
 def indmaxarg(vector):
     '''Dado un vector retorna el indice con mayor valor
@@ -583,48 +518,69 @@ def indmaxarg(vector):
             vector: vector
         Retorno
             Indice con mayor valor(el primer indice es 0)'''
-    aux=max(vector)
-    for i in range(len(vector)):
-        if vector[i]==aux:
-             return i
-         
-def absvector(vector):
-    '''Dado un vector retorna sus coordenadas con valor absoluto
-        Parametros:
-            vector: vector
-        Retorno
-            coordenadas con valor absoluto'''
-    for i in range(len(vector)):
-        if vector[i]<0:
-            vector[i]=-vector[i]
-    return vector
+    maxi=max(vector[0])
+    for i in range(len(vector[0])):
+        if vector[0][i]==maxi:
+            return i 
+        
+def aux_triangular(A):
+    B=A
+    rows=len(B)
+    aux=None
+    d=0
+    for i in range(rows-1):
+      aux=[columnaj(B,i)[0][i:-1]]
+      indi_max=indmaxarg(aux)
+      if indi_max>0:
+        C=B[i]
+        B[i]=B[i + indi_max]
+        B[i + indi_max]=C
+        d+=1
+    return B,d
 
-def triangular_superior_con_pivoteo(A):
-  '''Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular superior.
+def triangular_superior(A):
+    '''Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular superior, no debe haber 0's en la diagonal
         Parametros:
             A:matriz
         Retorno:
             Matriz en forma triangular superior'''
-  B=A
-  rows=len(B)
-  aux=None
-  aux2=None
-  d=0
-  for i in range(rows):
-    aux=columnaj(B,i)[i:len(columnaj(B,i))]
-    aux=absvector(aux)
-    indi_max=indmaxarg(aux)
-    if indi_max>0:
-      C=B[i]
-      B[i]=B[i + indi_max]
-      B[i + indi_max]=C
-      d+=1
-    for j in range(i+1,rows):
-        aux2=multiplicar_vector_por_escalar(B[i],( B[j][i]/B[i][i] ) )
-        B[j]=restar_vectores(B[j],aux2)
-  return B,d
+    B,d=aux_triangular(A)
+    rows=len(A)
+    aux=None
+    for i in range(rows):
+        for j in range(i+1,rows):
+            aux=escalarmatriz([B[i]],( B[j][i]/B[i][i] ) )
+            B[j]=resta([B[j]],aux)[0]
+    return B,d
 
-def red_gauss_gen(A):
+def triangular_inferior(A):
+    '''Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular inferior
+        Parametros:
+            A:matriz
+        Retorno:
+            Matriz en forma triangular inferior'''   
+    B,d=aux_triangular(A)
+    n = len(A)
+    for i in range(n-1, -1, -1):
+        for j in range(i-1, -1, -1):
+            aux=escalarmatriz([B[i]],( B[j][i]/B[i][i] ) )
+            B[j]=resta([B[j]],aux)[0]
+        #B[i]=escalarmatriz([B[i]],1/(B[i][i]))[0]
+
+    return B,d
+
+def diagonal(A):
+    B,d=triangular_superior(A)
+    n = len(A)
+    for i in range(n-1, -1, -1):
+        for j in range(i-1, -1, -1):
+            aux=escalarmatriz([B[i]],( B[j][i]/B[i][i] ) )
+            B[j]=resta([B[j]],aux)[0]
+        #B[i]=escalarmatriz([B[i]],1/(B[i][i]))[0]
+
+    return B,d
+
+def red_gauss(A):
     '''Dada una matriz A que representa un sistema de ecuaciones lineales,aplica el algoritmo de reduccion de gauss
         primero la convierte en una matriz triangular superior y despues en una matriz diagonal donde las soluciones son explicitas
         (La matriz debe tener tamano nx(n+1))
@@ -632,11 +588,10 @@ def red_gauss_gen(A):
             A:matriz
         Retorno:
             Solucion sistemas de ecuaciones lineales'''
-    B=triangular_superior_con_pivoteo(A)[0]
-    B=triangular_inferior(B)
+    B,d=diagonal(A)
     for i in range(len(B)):
-        B[i]=multiplicar_vector_por_escalar(B[i],1/(B[i][i]))
-    return B
+        B[i]=escalarmatriz([B[i]],1/(B[i][i]))[0]
+    return B,d
 
 def matriz_aum_id(A):
     '''Dada una matriz cuadrada a, retorna una matriz aumentada con la identidad
@@ -650,10 +605,8 @@ def matriz_aum_id(A):
             new[i][j]=A[i][j]
     for i in range(len(A)):
         for j in range(len(A),2*len(A)):
-            if i+len(A)==j:
-                new[i][j]=1
-            else:
-                new[i][j]=0
+            if j-len(A)==i:
+                new[i][j]=1    
     return new
     
 def inversa(A):
@@ -662,66 +615,62 @@ def inversa(A):
           A: matriz
       Retorno:
           matriz inversa'''
-  try:
-      rows=len(A)
-      B=matriz_aum_id(A)
-      B=red_gauss_gen(B)
-      for i in range(1,rows+1):
-          B=eliminarcolumnaj(B,1)
-      return B
-  except:
-      return('Matriz no cuadrada o input invalido')
+  if len(A)==1 and len(A[0])==1:
+      return [[1/A[0][0]]]
+  B=matriz_aum_id(A)
+  B=red_gauss(B)[0]
+  for i in range(len(A)):
+      eliminarcolumnaj(B,0  )
+  return B
 
-
+def diagonales(A):
+    n=vector_vacio(len(A))
+    for i in range(len(A)):
+        n[0][i]=(A[i][i])
+    return n
+ 
 def determinante(matriz):
    '''Dada una matriz cuadrada A,retorna su determinante
         Parametros:
             A: matriz
         Retorno
             determinante de A'''
-   try:
-       B,d=triangular_superior_con_pivoteo(matriz)
-       signo=(-1)**d
-       prod=1
-       for i in range(len(B)):
-           prod*=B[i][i]
-       return signo*prod
-   except:
-       return 0
+   A,d=diagonal(matriz)
+   aux=diagonales(A)
+   return round( productoria(aux[0])*((-1)**d),6)
 
 def remplazarcolumnaj(matriz,j,vector):
     '''Dada una matriz, su columna y un vector, remplaza la columna por el vector dado
         Parametros:
             matriz: matriz
-            j: columna(primera columna 1)
+            j: columna(primera columna 0)
             vector: vector que se desea remplazar
         Retorno:
             matriz con el elemento remplazado'''
-    j=j-1
     for i in range(len(matriz)):
-        matriz[i][j]=vector[i]
+        matriz[i][j]=vector[0][i]
     return matriz
 
-def vector_vacio(n):
-    '''Dado un numero n, devuelve con un vector de dimension n con todas las entradas iguales a 0
-        Parametros:
-            n: numero de entradas
-        Retorno:
-           Vector: con n entradas y entradas iguales a 0'''
-    aux=[]
-    for i in range(n):
-        aux.append(0)
-    return aux
+def proyeccion(vector1,vector2):
+    '''Proyección de v1 sobre v2'''
+    aux1=producto(vector1,vector2)
+    aux2=magnitud_vector(vector2)
+    aux3=aux1/aux2
+    return escalarmatriz(vector2,aux3)
+
+def normalizar(vector1):
+    return escalarmatriz(vector1,(1/magnitud_vector(vector1)))
 
 def calcula_qj(Q,aj,j,n):
-  '''Funcion auxiliar que calcula el vector ortonormal qj, no es de utilidad solo es una funcion auxiliar de gram_schmidt'''
-  suma=vector_vacio(n)
-  aux=None
+  '''Funcion auxiliar que calcula el vector ortonormal qj, no es de utilidad solo es una funcion auxiliar de gram_schmidt
+  Q=matriz
+  aj=vectorj
+  n=columnasQ(desde0)
+ '''
+  sigma=vector_vacio(n)
   for i in range(j):
-    aux=multiplicar_vector_por_escalar(columnaj(Q,i),producto_punto(aj,columnaj(Q,i)))
-    suma=sumar_vectores(suma,aux)
-  aj_p=restar_vectores(aj,suma)
-  return multiplicar_vector_por_escalar(aj_p,1/magnitud_vector(aj_p))
+      sigma=suma(sigma,proyeccion(aj,columnaj(Q,i)))
+  return normalizar(resta(aj,sigma))
 
 def gram_schmidt(A):
   '''Dada una matriz cuadrada, cuyas columnas son bases para R**n, devuelve una matriz ortogonal a traves del proceso de ortonormalizacion de gram-schmidt
@@ -731,8 +680,8 @@ def gram_schmidt(A):
           matriz ortogonal'''
   columns=len(A[0])
   Q=matriz_vacia(len(A),len(A[0]))  
-  Q=remplazarcolumnaj(Q,1,multiplicar_vector_por_escalar(columnaj(A,1),1/magnitud_vector(columnaj(A,1))))#columnaj(Q,1)/magnitud_vector(columnaj(Q,1)))
-  for j in range(1,columns+1):
+  Q=remplazarcolumnaj(Q,0,calcula_qj(Q,columnaj(A,0),0,columns))
+  for j in range(columns):
     Q=remplazarcolumnaj(Q,j,calcula_qj(Q,columnaj(A,j),j,columns))
   return Q
 
@@ -745,25 +694,6 @@ def factorizacionQR(A):
     print(print_matriz(R))
     return ''
 
-def diagonal(A):
-    '''Dada una matriz, retorna los valores de la diagonal
-        Parametros:
-            A: matriz
-        Retorno:
-            Valores de la diagonal'''
-    columns=len(A[0])
-    aux=[]
-    for i in range(columns):
-        aux.append(A[i][i])
-    return aux
-
-def print_vector(vector):
-    '''Dado un vector, lo imprime de manera organizada'''
-    aux=[]
-    for i in vector:
-        aux.append(round(i,6))
-    return print(aux)
-
 def valores_propios_algoritmo_QR(A):
   '''Dada una matriz cuadrada,se itera 100 veces, el algoritmo devuelve los valores propios a traves del algoritmo qr
       Parametros:
@@ -772,38 +702,10 @@ def valores_propios_algoritmo_QR(A):
       Retorno:
           valores propios(reales) aproximados'''
   Ak=A
-  for k in range(100):
+  for k in range(1000):
     Qk=gram_schmidt(Ak)
-    Ak=producto(producto(transpuesta(Qk),Ak),Qk)#Qk.T @ Ak @ Qk
-  return print_vector(diagonal(Ak))
-
-def transpuesta_vector(vector,aux):
-    '''Dado un vector, retorna su transpuesta
-    Parametros:
-        vector:vector
-        aux: 1(si es un vector columna) 2(si es un vector fila)
-    Retorno
-        vector transpuesta'''
-    new=[]
-    if aux==1:
-        for i in vector:
-            new.append(i[0])
-    elif aux==2:
-        for i in vector:
-            new.append([i])
-    return new
-
-def vector_por_matriz(vector,matriz):
-   '''Dado un vector y una matriz devuelve su producto'''
-   vector=np.array(vector)
-   matriz=np.array(matriz)
-   return (vector @ matriz).tolist()
-        
-def matriz_por_vector(vector,matriz):
-   '''Dada una matriz y un vector devuelve su producto'''
-   vector=np.array(vector)
-   matriz=np.array(matriz) 
-   return (matriz @ vector).tolist()
+    Ak=producto(producto(transpuesta(Qk),Ak),Qk)
+  return diagonales(Ak)
 
 def metodo_de_potencias(A):
   '''Dada una matriz cuadrada,se calcula el autovector de mayor autovalor
@@ -811,35 +713,58 @@ def metodo_de_potencias(A):
           A:matriz
       Retorno:
           autovector con mayor autovalor'''
-  A=np.array(A)
-  new=[]
-  iteraciones=1000
-  for i in range(len(A)):
-      new.append(1)
-  v0=np.array(new)
-  Av0=A @ v0
-  v=Av0/(np.sqrt(sum(Av0 * Av0)))
-  for i in range(iteraciones):
-      v0=v
-      Av0=A @ v0
-      v=Av0/(np.sqrt(sum(Av0 * Av0)))
-  return v.tolist()
-             
+  x=vector_vacio(len(A[0]))
+  x2=None
+  for i in range(len(x[0])):
+      x[0][i]=1
+  for i in range(1000):
+      x2=escalarmatriz(producto(A,x),1/magnitud_vector(producto(A,x)))
+      x=x2
+  return x
+
 def apro_mayor_valor_propio(A,v_prop):
-  '''Dado una aproximacion al autovalor de mayor valor propio o un valor exacto, la funcion
+  '''Dado una aproximacion al autovector de mayor valor propio o un valor exacto, la funcion
     retorna una aproximacion al autovalor correspondiente
     Parametros:
         A:matriz
         v_prop: vector propio(fila)
     Retorno:
         Autovalor dominante'''
-  A=np.array(A)
-  v_prop=np.array(v_prop)
-  return (v_prop.T @ A @ v_prop) / (v_prop @ v_prop)
+
+  return (producto(v_prop,(producto(A,v_prop))))/ (magnitud_vector(v_prop)**2)
 
 import statistics as st 
 
 #http://www1.monografias.com/docs115/regresion-lineal-multiple/regresion-lineal-multiple2.shtml
+def regresion1(x,y,grado,tupla):
+    columnas=0
+    aux=[]
+    for i in range(len(tupla)):
+        if tupla[i]==1:
+            columnas+=1   
+            aux.append(i)
+    rows=len(x)
+    A=matriz_vacia(rows,columnas)
+    for i in range(len(aux)):
+        A=remplazarcolumnaj(A,i,[(np.array(x)**(aux[i])).tolist()])
+    A=transpuesta(A)
+    v=[[1/producto(A,A)]]
+    v=producto(v,A)
+    v=[producto(v,[y])]
+    aux1=producto([v],A)
+    aux1=resta([y],aux1)
+    aux3=(magnitud_vector(aux1))**2
+    aux1=aux3
+    aux2=len(A[0])-2
+    sigma_2=(aux1/aux2)
+    cov=[sigma_2/producto(A,A)]
+    incer=[cov[0]**(1/2)]
+    media=st.mean(y)
+    VT=sumatoria(((np.array(y)-media)**2).tolist())
+    R_2=1-(aux3/VT)*((len(A[0])-1)/(len(A[0])-2))
+    R=R_2**(1/2)
+    return v,incer,R
+
 def regresion(x,y,grado,tupla):
     '''Ingresados valores de x,y y el grado del polinomio para la regresión,retorna los parámetros de la regresión
     Parametros
@@ -859,27 +784,29 @@ def regresion(x,y,grado,tupla):
     rows=len(x)
     A=matriz_vacia(rows,columnas)
     for i in range(len(aux)):
-        A=remplazarcolumnaj(A,i+1,(np.array(x)**(aux[i])).tolist())
-    v=matriz_por_vector(y,producto(inversa(producto(transpuesta(A),A)),transpuesta(A)))
-    aux1=restar_vectores(matriz_por_vector(v,A),y)
+        A=remplazarcolumnaj(A,i,[(np.array(x)**(aux[i])).tolist()])
+    if len(transpuesta(A))==1:
+        return regresion1(x,y,grado,tupla)
+    v=inversa(producto(transpuesta(A),A))
+    v=producto(v,transpuesta(A))
+    v=producto(v,[y])
+    aux1=resta(producto(A,v),[y])
     aux1=(magnitud_vector(aux1))**2
     if len(A)-len(A[0])-1!=0:
-        aux2=len(A)-len(A[0])-1
+       aux2=len(A)-len(A[0])-1
     elif len(A)-len(A[0])-1==0:
-        aux2=len(A)-len(A[0])
+       aux2=len(A)-len(A[0])
     sigma_2=(aux1/aux2)
     cov=inversa(producto(transpuesta(A),A))
-    cov=productoescalarmatriz(cov,sigma_2)
+    cov=escalarmatriz(cov,sigma_2)
     incer=[]
     media=st.mean(y)
     VT=sumatoria(((np.array(y)-media)**2).tolist())
     R_2=1-(sigma_2*(len(A)-1)/VT)
     R=(R_2)**(1/2)
     for i in range(len(cov)):
-        incer.append((abs(cov[i][i]))**(1/2))
-    return v[::-1],incer[::-1],R
-
-import matplotlib.pyplot as plt
+       incer.append((abs(cov[i][i]))**(1/2))
+    return v[0][::-1],incer[::-1],R
 
 def aux_regresion(x,y,grado,tupla):
     '''Ingresados valores de x,y y el grado del polinomio para la regresión,retorna los datos de y ajustados a x
@@ -995,6 +922,7 @@ def regresionlineal(x,y):
     r=sigma6/(np.sqrt(sigma7*sigma8))
     return coeficientes,errores,abs(r)
 #https://glosarios.servidor-alicante.com/terminos-estadistica/coeficiente-de-correlacion-lineal-de-pearson
+#print(regresionlineal([1,2,3],[1,4,6]))
 
 def aux_regresionlin(x,y):
     '''Ingresados valores de x,y y el grado del polinomio para la regresión,retorna los datos de y ajustados a x
@@ -1071,3 +999,4 @@ def dibujo_reglineal(x,y,fila,columna,nombre,nombrex,nombrey,ax,label):
         ax[fila][columna].set_ylabel(nombrey)
         ax[fila][columna].set_title(nombre)
         ax[fila][columna].legend()
+

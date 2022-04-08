@@ -1,6 +1,6 @@
-Change Log
 ==========
 
-0.1.7 (06/04/2022)
+0.2.3 (08/04/2022)
 -------------------
--- Corrections
+-- Corrections of the methods for matrixs final and plot implementation correction
+--I will upload a tutorial 
