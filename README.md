@@ -5,8 +5,7 @@
 - 📫 How to reach me t.gomezs2@uniandes.edu.co
 - ![STAR WARS](https://github.com/Ratabart666/Ratabart666/blob/main/sith.jpg)
 - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Ratabart666/Ratabart666/tree/main/HEAD)
-.. image:: https://mybinder.org/badge_logo.svg
- :target: https://mybinder.org/v2/gh/Ratabart666/Ratabart666/tree/main/HEAD
+
 
 <!---
 Ratabart666/Ratabart666 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
