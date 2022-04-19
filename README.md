@@ -4,7 +4,8 @@
 - 💞️ I’m looking to collaborate on Science
 - 📫 How to reach me t.gomezs2@uniandes.edu.co
 - ![STAR WARS](https://github.com/Ratabart666/Ratabart666/blob/main/sith.jpg)
-- [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Ratabart666/Ratabart666/tree/main/HEAD)
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Ratabart666/Ratabart666/HEAD)
 
 
 <!---
