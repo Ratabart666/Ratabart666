@@ -651,6 +651,21 @@ def remplazarcolumnaj(matriz,j,vector):
         matriz[i][j]=vector[0][i]
     return matriz
 
+def remplazar_posicion(matriz,i,j,c):
+    '''Dada una matriz,y la posición i,j ; remplaza la columna por el vector dado
+        Parametros:
+            matriz: matriz
+            j: columna(primera columna 0)
+            i: fila(primera fila 0)
+            c:valor a remplazar
+        Retorno:
+            matriz con el elemento remplazado'''
+    for k in range(len(matriz)):
+        for m in range(len(matriz[0])):
+            if k==i and m==j:
+                matriz[k][m]=c
+    return matriz
+
 def proyeccion(vector1,vector2):
     '''Proyección de v1 sobre v2'''
     aux1=producto(vector1,vector2)
@@ -732,6 +747,23 @@ def apro_mayor_valor_propio(A,v_prop):
         Autovalor dominante'''
 
   return (producto(v_prop,(producto(A,v_prop))))/ (magnitud_vector(v_prop)**2)
+
+def E_fila_c(n,k,c):
+    '''Dado una dimensión, retorna la matriz elemental E de nxn asociada a multiplicar un 
+    escalar  c por la fila k de una matriz A de nxm
+    Parametros:
+        n:dimensión matriz elemental
+        k:fila por la que se multiplica el escalar(empieza por la fila 0)
+        c:escalar
+    Retorno:
+        matriz elemental E de nxn asociada a multiplicar un 
+        escalar c por la fila k de una matriz A de nxm'''
+    A=matriz_vacia(n, n)
+    for i in range(n):
+        for j in range(n):
+            A[i][i]=1
+    A[k][k]=c
+    return A
 
 import statistics as st 
 

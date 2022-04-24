@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Algoritmosnumericos
-Version: 0.2.2
+Version: 0.2.4
 Summary: maths algorithms and util funtion for plot numerical methods
 Home-page: https://github.com/Ratabart666
 Author: Thomas Gomez
@@ -15,7 +15,7 @@ Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3
 License-File: LICENCE.txt
 
-Numerical Algorithms 0.2.2
+Numerical Algorithms 0.2.4
 
 This library have very strongs Algorithms
 you should import as follow import Algoritmosnumericos as Alg
@@ -24,9 +24,7 @@ and if you wish to know  the funtions only write (help(Alg))
 
 ==========
 
-0.2.3 (08/04/2022)
+0.2.4 (24/04/2022)
 -------------------
--- Corrections of the methods for matrixs final and plot implementation correction
---I will upload a tutorial 
-
+-Se adicionÃ³ la posibiidad de crear una matriz elemental del tipo multiplicar fila por escalar
 
