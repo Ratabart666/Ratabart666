@@ -11,3 +11,4 @@ jupyterlab_launcher>=0.5.0
 Algoritmosnumericos
 prettytable
 ipympl
+automata-lib
