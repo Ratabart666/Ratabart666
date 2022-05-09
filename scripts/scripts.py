@@ -18,7 +18,7 @@ def correr(extensiones, ruta):
                         print(i)
                         print('#')
                         print((open(ruta+'/'+i).read()))
-                        exec(open(ruta+'/'+i).read())
+                        print(exec(open(ruta+'/'+i).read()))
                         print('Final archivo')
                     except:
                         print('Inicio')
