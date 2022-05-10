@@ -1,0 +1,7 @@
+0:pesos(numeros entre 0 y 1) y la suma de esta fila debe ser 1
+
+1: Desarrollar acuerdo internacional que limite y  controle los inconvenientes que puedan ocurrir con las redes neuronales.
+
+2:Generar un certificado de aprobacion necesario para todos los prototipos que tengan conexiones neuronales basado en una cierta cantidad de pruebas.
+
+3:Crear un software dentro de las protesis que eviten la manipulacion externa de esta misma 
