@@ -22,7 +22,7 @@ def calificacion(nom1, nom2):
     datos2 = open(nom2, 'r')
     content_datos2 = datos2.read()
     print(100*'-')
-    print('El archivo cargado de características cualitativas es:')
+    print('El archivo cargado de caracteristicas cualitativas es:')
     print('')
     print(content_datos2)
     resultados = {}
@@ -33,18 +33,20 @@ def calificacion(nom1, nom2):
     for i in resultados:
         print(100*'-')
         print('')
-        print(i, ' : ', round(resultados[i]), '%')
+        print(i+1, ' : ', round(resultados[i]), '%')
     print('')
-    return ('Ha finalizado.')
+    print('Ha finalizado la accion a continuacion vuelve al menu.')
 
 
 def menu():
+    print('Bienvenido al menu')
+    print('')
     print('Nota 1: verifique como se organizan los archivo en el archivo formato.tx')
     print('')
-    print('Nota 2: Digite - en cualquier input si quiere salir')
+    print('Nota 2: Digite - en todos los inputs si desea salir')
     print(' ')
-    x = input('Ingrese el nombre del archivo de caracteristicas numericas txt(El archivo debe estar en la misma carpeta que este script):')
-    y = input('Ingrese el nombre del archivo de caracteristicas cualitativas txt(El archivo debe estar en la misma carpeta que este script):')
+    x = input('Ingrese el nombre del archivo de caracteristicas numericas txt(El archivo debe estar de preferencia en la misma carpeta que este script):')
+    y = input('Ingrese el nombre del archivo de caracteristicas cualitativas txt(El archivo debe estar de preferencia en la misma carpeta que este script):')
     if x != '-' and y != '-':
         print(100*'#')
         calificacion(x, y)
