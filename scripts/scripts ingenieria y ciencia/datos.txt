@@ -1,7 +1,0 @@
-Comodidad para el usuario,Seguridad,Viabilidad Tecnologica,Costos,Aceptacion externa
-0.25,0.15,0.15,0.20,0.25
-9,8,10,10,7
-10,7,9,9,8
-10,9,9,8,8
-7,9,9,6,6
-

@@ -1,3 +1,0 @@
-En los datos el puntaje en cada entrada de la matriz es de 1 a 10, adicionalmente cada fila numerica esta organizada desde 0;
-la fila 0 simboliza los porcentajes y las demas filas(desde el 1) simbolizan rutas, de igual manera las columnas simbolizan cualidades a ser evaluadas
-En el archivo caracteristicas encontrara que ruta significa cada fila.
