@@ -17,7 +17,7 @@ classifiers = [
 
 setup(
     name='Algoritmosnumericos',
-    version='0.2.4',
+    version='0.2.5',
     description='maths algorithms and util funtion for plot numerical methods',
     long_description=open('README.txt').read()+'\n\n' +
     open('CHANGELOG.txt').read(),

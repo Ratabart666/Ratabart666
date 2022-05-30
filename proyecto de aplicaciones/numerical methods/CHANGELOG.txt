@@ -1,5 +1,5 @@
 ==========
 
-0.2.4 (24/04/2022)
+0.2.5 (25/05/2022)
 -------------------
--Se adicionó la posibiidad de crear una matriz elemental del tipo multiplicar fila por escalar
+-Se corrigió algunos problemas para dubujar regresiones.
