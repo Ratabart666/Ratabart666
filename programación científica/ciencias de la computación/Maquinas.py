@@ -9,40 +9,6 @@ from automata.pda.dpda import DPDA
 from automata.pda.npda import NPDA
 from automata.tm.dtm import DTM
 
-dtm = DTM(
-    states={"q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"},
-    input_symbols={"0", "1"},
-    tape_symbols={"0", "1", "#", ".", "x"},
-    transitions={
-        #####################################################
-        "q1": {"1": ("q3", "x", "R"), "0": ("q2", "x", "R"), "#": ("q8", "#", "R")},
-        #####################################################
-        "q2": {"0": ("q2", "0", "R"), "1": ("q2", "1", "R"), "#": ("q4", "#", "R")},
-        #####################################################
-        "q3": {"0": ("q3", "0", "R"), "1": ("q3", "1", "R"), "#": ("q5", "#", "R")},
-        #####################################################
-        "q4": {"x": ("q4", "x", "R"), "0": ("q6", "x", "L")},
-        #####################################################
-        "q5": {"x": ("q5", "x", "R"), "1": ("q6", "x", "L")},
-        #####################################################
-        "q6": {
-            "0": ("q6", "0", "L"),
-            "1": ("q6", "1", "L"),
-            "x": ("q6", "x", "L"),
-            "#": ("q7", "#", "L"),
-        },
-        #####################################################
-        "q7": {"x": ("q1", "x", "R"), "0": ("q7", "0", "L"), "1": ("q7", "1", "L")},
-        #####################################################
-        "q8": {"x": ("q8", "x", "R"), ".": ("q9", ".", "R")},
-        #####################################################
-    },
-    initial_state="q1",
-    blank_symbol=".",
-    final_states={"q9"},  # ,'q10'}
-)
-
-
 npda1 = NPDA(
     states={"qloop", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "qfinal"},
     input_symbols={"0", "1"},
@@ -222,7 +188,39 @@ dtm3 = DTM(
     blank_symbol=".",
     final_states={"q9"},  # ,'q10'}
 )
-
+dtm4 = DTM(
+    states={"qac","q0","q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9","q10","q11"},
+    input_symbols={"0","1","+"},
+    tape_symbols={"0", "1","+","C","O"," ","I"},
+    transitions={
+        "q0": {"1": ("q6", "C", "L"), "0": ("q4", "C", "L"), "+": ("q1", " ", "L")},
+        #####################################################
+        "q1": {"1": ("q1", "1", "L"), "0": ("q1", "0", "L"), "I": ("q1", "1", "L"),"O": ("q1", "0", "L")," ": ("q10", " ", "R")},
+        #####################################################
+        "q2": {"1": ("q2", "1", "R"), "0": ("q2", "0", "R"), "+": ("q2", "+", "R")," ": ("q0", " ", "L")},
+        #####################################################
+        "q3": {"1": ("q3", "1", "R"),"0": ("q3", "0", "R"),"O": ("q3", "O", "R"),"I": ("q3", "I", "R"),"+": ("q3", "+", "R"),"C": ("q0", "0", "L")},
+        #####################################################
+        "q4": {"0": ("q4", "0", "L"), "1": ("q4", "1", "L"), "+": ("q5", "+", "L")},
+        #####################################################
+        "q5": {"1": ("q3", "I", "R"), "0": ("q3", "O", "R"), " ": ("q3", "O", "R"),"O": ("q5", "O", "L"),"I": ("q5", "I", "L")},
+        #####################################################
+        "q6": {"0": ("q6", "0", "L"),"1": ("q6", "1", "L"),"+": ("q7", "+", "L")},
+        #####################################################
+        "q7": {"0": ("q8", "I", "R")," ": ("q8", "I", "R"),"1": ("q9", "O", "L"),"O": ("q7", "O", "L"),"I": ("q7", "I", "L")},
+        #####################################################
+        "q8": {"1": ("q8", "1", "R"),"0": ("q8", "0", "R"),"O": ("q8", "O", "R"),"I": ("q8", "I", "R"),"+": ("q8", "+", "R"),"C": ("q0", "1", "L")},
+        #####################################################
+        "q9": {"1": ("q9", "0", "L"),"0": ("q8", "1", "R")," ": ("q8", "1", "R")},
+        #####################################################
+        "q10": {"1": ("q10", "1", "R"),"0": ("q10", "0", "R")," ": ("q11", " ", "R")},
+        #####################################################
+        "q11": {"0": ("q11", " ", "R"),"1": ("q11", " ", "R")," ": ("qac", " ", "R")}},
+        
+    initial_state="q2",
+    blank_symbol=" ",
+    final_states={"qac"},  # ,'q10'}
+)
 
 def input1(my_input_str):
     if npda1.accepts_input(my_input_str):
@@ -250,8 +248,21 @@ def input3(my_input_str):
     print("")
     return "Gracias"
 
+def input4(my_input_str):
+    if dtm4.accepts_input(my_input_str):
+        print("cadena aceptada")
+        print('')
+        x=list(dtm4.read_input(my_input_str)[1][0])
+        print("La suma es : "+''.join(x))
+    else:
+        print("cadena rechazada ingrese una cadena del tipo v+w donde v y w están en binario")
+    print("")
+    return "Gracias"
+
+
 
 def menu():
+    print(100*'-')
     print("Las máquinas disponibles son las siguientes: ")
     print(
         "1)Automata de pila que reconoce el lenguaje en binario que tiene igual número de 0s y de 1s"
@@ -260,27 +271,36 @@ def menu():
     print(
         "3)Máquina de Turing determinista de una cinta que reconoce si 2 cadenas en binario son iguales(Ingrese el input como w#v)"
     )
+    print('4) Máquina de Turing determinista de una cinta que computa la suma de 2 cadenas binarias, ingrese v+w')
     print("#)Salir del programa ")
     x = input("Ingrese la máquina que desea utilizar: ")
     if x == "#":
         print("")
         print("Hasta luego, gracias por utilizar el programa")
+        print(100*'-')
         return ""
     y = input("Ingrese la cadena: ")
     print("")
     if x == "1":
         print(input1(y))
+        print(100*'-')
         menu()
     elif x == "2":
         print(input2(y))
+        print(100*'-')
         menu()
     elif x == "3":
         print(input3(y))
+        print(100*'-')
+        menu()
+    elif x=='4':
+        print(input4(y))
+        print(100*'-')
         menu()
     else:
         print("Error, ingrese un input válido")
         print("")
+        print(100*'-')
         menu()
-
 
 menu()
