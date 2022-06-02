@@ -56,6 +56,7 @@ ax.plot(T,P)
 ax.set_title('Gráfica:T(°C) vs Pvap(Kpa)')
 ax.set_xlabel('T(°C)')
 ax.set_ylabel('Pvap(Kpa)')
+plt.show()
 
 
 # In[220]:
@@ -65,6 +66,7 @@ ax.plot(T,Vg)
 ax.set_title('Gráfica: T(°C) vs satliq(m**3/kg)')
 ax.set_xlabel('T(°C)')
 ax.set_ylabel('satliq(m**3/kg)')
+plt.show()
 
 
 # In[221]:
@@ -75,6 +77,7 @@ ax.plot(T,vf)
 ax.set_title('Gráfica: T(°C) vs satvapor(m**3/kg)')
 ax.set_xlabel('T(°C)')
 ax.set_ylabel('satvapor(m**3/kg)')
+plt.show()
 
 
 
@@ -162,6 +165,7 @@ ax.plot(T,P)
 ax.set_title('Gráfica interpolada:T(°C) vs Pvap(Kpa)')
 ax.set_xlabel('T(°C)')
 ax.set_ylabel('Pvap(Kpa)')
+plt.show()
 
 
 # In[220]:
@@ -172,6 +176,7 @@ ax.plot(T,Vg)
 ax.set_title('Gráfica interpolada: T(°C) vs satliq(m**3/kg)')
 ax.set_xlabel('T(°C)')
 ax.set_ylabel('satliq(m**3/kg)')
+plt.show()
 
 
 # In[221]:
@@ -182,6 +187,7 @@ ax.plot(T,vf)
 ax.set_title('Gráfica interpolada: T(°C) vs satvapor(m**3/kg)')
 ax.set_xlabel('T(°C)')
 ax.set_ylabel('satvapor(m**3/kg)')
+plt.show()
 
 
 # In[222]:
