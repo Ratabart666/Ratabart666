@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import lagrange
+plt.style.use('dark_background')
 
 
 datos=pd.read_csv('datos_termodinamicos.txt')

@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+plt.style.use('dark_background')
 
 
 
@@ -97,7 +98,7 @@ x=np.linspace(-4,4,100)
 ax.plot(x,derivada_central(x,0.1,1),color='green')
 ax.plot(x,f(x,1))
 ax.set_title('gráfica derivada del coseno con derivada central(h=0.1)')
-
+plt.show()
 
 
 
@@ -106,6 +107,7 @@ x=np.linspace(-4,4,100)
 ax.plot(x,derivada_progresiva(x,0.1,1),color='green')
 ax.plot(x,f(x,1))
 ax.set_title('gráfica derivada del coseno con derivada progresiva(h=0.1)')
+plt.show()
 
 
 
@@ -115,6 +117,7 @@ x=np.linspace(-4,4,100)
 ax.plot(x,derivada_regresiva(x,0.1,1),color='green')
 ax.plot(x,f(x,1))
 ax.set_title('gráfica derivada del coseno con derivada regresiva(h=0.1)')
+plt.show()
 
 
 
@@ -129,6 +132,7 @@ x=np.linspace(-4,4,100)
 ax.plot(x,derivada_central(x,0.001,1),0.1,color='green')
 ax.plot(x,f(x,1))
 ax.set_title('gráfica derivada del coseno con derivada central(h=0.001)')
+plt.show()
 
 
 
@@ -138,7 +142,7 @@ x=np.linspace(-4,4,100)
 ax.plot(x,derivada_progresiva(x,0.001,1),0.1,color='green')
 ax.plot(x,f(x,1))
 ax.set_title('gráfica derivada del coseno con derivada progresiva(h=0.001)')
-
+plt.show()
 
 
 
@@ -147,7 +151,7 @@ x=np.linspace(-4,4,100)
 ax.plot(x,derivada_regresiva(x,0.001,1),0.1,color='green')
 ax.plot(x,f(x,1))
 ax.set_title('gráfica derivada del coseno con derivada regresiva(h=0.001)')
-
+plt.show()
 
 
 
@@ -163,8 +167,7 @@ ax.set_ylim(-4,4)
 ax.plot(x,derivada_central(x,0.1,2),color='green')
 ax.plot(x,f(x,2))
 ax.set_title('gráfica derivada de y=(1/x**6)-(1/x**12) con derivada central(h=0.1)')
-
-
+plt.show()
 
 
 fig,ax=plt.subplots()
@@ -174,7 +177,7 @@ ax.set_ylim(-4,4)
 ax.plot(x,derivada_progresiva(x,0.1,2),color='green')
 ax.plot(x,f(x,2))
 ax.set_title('gráfica derivada de y=(1/x**6)-(1/x**12) con derivada progresiva(h=0.1)')
-
+plt.show()
 
 
 
@@ -185,7 +188,7 @@ ax.set_ylim(-4,4)
 ax.plot(x,derivada_regresiva(x,0.1,2),color='green')
 ax.plot(x,f(x,2))
 ax.set_title('gráfica derivada de y=(1/x**6)-(1/x**12) con derivada regresiva(h=0.1)')
-
+plt.show()
 
 
 
@@ -201,7 +204,7 @@ ax.set_ylim(-4,4)
 ax.plot(x,derivada_central(x,0.001,2),color='green')
 ax.plot(x,f(x,2))
 ax.set_title('gráfica derivada de y=(1/x**6)-(1/x**12) con derivada central(h=0.001)')
-
+plt.show()
 #La linea vertical es una singularidad cuando x=0
 
 
@@ -215,7 +218,7 @@ ax.set_ylim(-4,4)
 ax.plot(x,derivada_progresiva(x,0.001,2),color='green')
 ax.set_title('gráfica derivada de y=(1/x**6)-(1/x**12) con derivada progresiva(h=0.001)')
 ax.plot(x,f(x,2))
-
+plt.show()
 
 # In[167]:
 
@@ -227,7 +230,7 @@ ax.set_ylim(-4,4)
 ax.plot(x,derivada_regresiva(x,0.001,2),color='green')
 ax.set_title('gráfica derivada de y=(1/x**6)-(1/x**12) con derivada regresiva(h=0.001)')
 ax.plot(x,f(x,2))
-
+plt.show()
 #máximos y mínimos:
     
 
