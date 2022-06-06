@@ -1,1 +1,1 @@
-python3 Maquinas.py
+python3 init.py
