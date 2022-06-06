@@ -1,7 +1,7 @@
 def pum(x:int,jugadores:int)->str:
     c=1
     a=1
-    while c<=14:
+    while c<=500:
         if a==jugadores+1:
             a=1
         if c%x==0:

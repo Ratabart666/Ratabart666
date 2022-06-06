@@ -6,6 +6,7 @@ def mostrar_menu()->None:
     print("Opciones")
     print("1.", "Buscar la bolita")
     print("2.", "Tiro al blanco")
+    print("3.","Salir")
 
 def opcion1()->None:
     print("-"*32)
@@ -36,14 +37,22 @@ def opcion2()->None:
         x=feria.coordenadas_respecto_centro_mesa(velocidad,alfa,beta)
         print("Pero con esos valores la bola debería haber caído a",x, "metros de distancia del centro de la mesa")
 
-
-mostrar_menu()
-opcion = int(input("Por favor seleccione una opción del menú: "))
-
-if opcion == 1:
-    opcion1()
-elif opcion == 2:
-    opcion2()
-else:
-    print("Por favor seleccione una opción válida")
+def menu():
+    mostrar_menu()
+    opcion = int(input("Por favor seleccione una opción del menú: "))
+    if opcion == 1:
+        opcion1()
+        print(100*'#')
+        menu()
+    elif opcion == 2:
+        opcion2()
+        print(100*'#')
+        menu()
+    elif opcion== 3:
+        print('Gracias')
+    else:
+        print("Por favor seleccione una opción válida")
+        print(100*'#')
+        menu()
+menu()
     

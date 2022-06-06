@@ -1,0 +1,1 @@
+python consola_asistencia_congreso.py
