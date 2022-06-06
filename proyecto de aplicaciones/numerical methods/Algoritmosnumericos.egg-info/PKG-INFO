@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Algoritmosnumericos
-Version: 0.2.5
+Version: 0.2.6
 Summary: maths algorithms and util funtion for plot numerical methods
 Home-page: https://github.com/Ratabart666
 Author: Thomas Gomez
@@ -23,6 +23,6 @@ and if you wish to know  the funtions only write (help(Alg))
 
 ==========
 
-0.2.5 (25/05/2022)
+0.2.6 (05/06/2022)
 -------------------
--Se corrigiÃ³ algunos problemas para dubujar regresiones.
+-Se agregÃ³ optimizacion numerica para minimos y maximos locales
