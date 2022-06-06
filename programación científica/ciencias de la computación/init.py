@@ -405,6 +405,10 @@ def menu():
         print(input5(y))
         print(100*'-')
         menu()
+    elif x== "6":
+        print(input6(y))
+        print(100*"-")
+        menu()
     else:
         print("Error, ingrese un input válido")
         print("")
