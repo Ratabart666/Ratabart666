@@ -8,6 +8,10 @@ import statistics as st
 import numpy as np
 from scipy.special import roots_legendre
 import warnings
+from prettytable import MSWORD_FRIENDLY
+from prettytable.colortable import ColorTable, Themes
+from prettytable import PrettyTable
+from scipy.stats import norm
 
 warnings.filterwarnings("ignore")
 
@@ -70,12 +74,12 @@ def derivada_numerica1(x_values, y_values, loc):
     y_values[0]
     if loc != 0 and loc != len(x_values) - 1:
         return (y_values[loc + 1] - y_values[loc - 1]) / (
-            2 * (x_values[1] - x_values[0])
+            2 * (x_values[loc] - x_values[loc+1])
         )
     elif loc == 0:
-        return (y_values[loc + 1] - y_values[loc]) / ((x_values[1] - x_values[0]))
+        return (y_values[loc + 1] - y_values[loc]) / ((x_values[loc] - x_values[loc+1]))
     elif loc == len(x_values) - 1:
-        return (y_values[loc] - y_values[loc - 1]) / ((x_values[1] - x_values[0]))
+        return (y_values[loc] - y_values[loc - 1]) / ((x_values[loc] - x_values[loc-1]))
 
 
 def derivada_numerica2(x_values, loc, funcion):
@@ -104,7 +108,7 @@ def segunda_derivada_numerica1(x_values, y_values, loc):
         Segunda Derivada evaluada nÃºmericamente en el punto deseado. Atencion La funcion evalua en puntos diferentes del inicial y final.
     """
     return (y_values[loc + 1] - 2 * y_values[loc] + y_values[loc - 1]) / (
-        (x_values[1] - x_values[0]) ** 2
+        (x_values[loc] - x_values[loc+1]) ** 2
     )
 
 
@@ -1150,6 +1154,7 @@ def dibujo_reglineal(
 
 
 def discriminar(x, y):
+    '''Funcion auxiliar para optimizar'''
     for i in x:
         if abs((i - y) / y) < 0.1:
             z = False
@@ -1274,3 +1279,95 @@ def min_optimizacion(xValues, yValues, max_min, m):
 
     best.sort(reverse=False)
     return best
+
+def hipotesis(n, μ, σ, μh, α):
+    '''
+    Para una hipotesis de promedio sobre una muestra, y dado su grado de confianza, devuelve si la hipotesis es verdadera o Falsa
+    Parametros:
+        n: numero de datos
+        μ: promedio
+        σ: desviacion estandar
+        μh: Hipotésis de promedio
+        α: grado de confianza
+    Retorno:
+        Falso o Verdadero
+    '''
+    # Normalizamos por comodidad para una distribución normal estandar y hallamos el valor absoluto del estádistico de prueba
+    z = abs(μh-μ)*(np.sqrt(n))*(1/σ)
+    # Hecho lo  anterior hallamos la mitad de p
+    p = 1-norm.cdf(z)
+    # Realizamos la prueba de hipotésis
+    if(2*p < α):
+        return False
+    else:
+        return True
+    
+def integral_montecarlo(funcion,a,b):
+    '''Ingresado una funcion y los limites de integracion devuelve su integral numerica evaluada con metodos de montecarlo
+    Parametros:
+        funcion: Funcion que se quiere evaluar
+        a: limite de integracion inferior
+        b: limite de integracion superior
+    Retorno:
+        Retorna la integral numerica'''
+    numeros_aleatorios=funcion(np.random.uniform(a,b,100000)).tolist()#números aleatorios evaluados en f
+    integral=(1/100000)*sumatoria(numeros_aleatorios)*(b-a)#Integral
+    return integral
+
+def tabla_serie(serie):
+    '''Dado un serie de pandas filtrado(la columna tiene datos solo numericos), devuelve su tabla de 
+    frecuencia:
+    Parametros: 
+        serie: serie de pandas con columna numerica
+    Retorno:
+        Retorna las tablas de frecuencias
+    '''
+    maximo = serie.max()
+    minimo = serie.min()
+    clases = round(1+np.log2(len(serie)))
+    amplitud = (maximo-minimo)/clases
+    x = PrettyTable()
+    x = ColorTable(theme=Themes.OCEAN)
+    x.field_names = ['Intervalo '+serie.name,
+                     'Frecuencia absoluta', 'Frecuencia porcentual(%)']
+    Intervalo = ''
+    Frecuencia = ''
+    Frecuencia_por = ''
+    for i in np.arange(minimo, maximo-amplitud, amplitud):
+        Intervalo = '['+str(round(i, 2))+','+str(round(i+amplitud, 2))+')'
+        Frecuencia = serie[(serie >= i) & (serie < i+amplitud)].count()
+        Frecuencia_por = round(Frecuencia/len(serie)*100, 2)
+        x.add_row([Intervalo, Frecuencia, Frecuencia_por])
+    i = maximo-amplitud
+    Intervalo = '['+str(round(i, 2))+','+str(round(i+amplitud, 2))+']'
+    Frecuencia = serie[(serie >= i) & (serie <= i+amplitud)].count()
+    Frecuencia_por = round(Frecuencia/len(serie)*100, 2)
+    x.add_row([Intervalo, Frecuencia, Frecuencia_por])
+
+    return x
+
+
+def tabla_datos_agrupados_1(datos):
+    '''Dado un dataframe filtrado(se filtra las columnas, tal que cada columna tenga datos solo numericos), devuelve sus tabla de 
+    frecuencia:
+    Parametros: 
+       datos: DataFrame con columnas numericas
+    Retorno:
+        Retorna las tablas de frecuencias
+    '''
+    print('Tablas de frecuencia datos agrupados')
+    print(' ')
+    print('Nota: El número de datos por columna es:', len(datos))
+    for i in datos:
+        print(' ')
+        print(100*'-')
+        print(' ')
+        print(tabla_serie(datos[i]))
+    return ''
+
+
+
+
+
+
+        

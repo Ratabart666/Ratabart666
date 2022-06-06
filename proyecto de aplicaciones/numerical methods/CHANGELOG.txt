@@ -1,5 +1,5 @@
 ==========
 
-0.2.6 (05/06/2022)
+0.2.7 (05/06/2022)
 -------------------
--Se agregó optimizacion numerica para minimos y maximos locales
+-Se agrego optimizacion numerica, algunas funciones estadisticas e integracion por montecarlo
