@@ -8,6 +8,9 @@ Created on Thu Jun  2 00:34:45 2022
 from automata.pda.dpda import DPDA
 from automata.pda.npda import NPDA
 from automata.tm.dtm import DTM
+from automata.fa.dfa import DFA
+from automata.fa.nfa import NFA
+
 
 npda1 = NPDA(
     states={"qloop", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "qfinal"},
@@ -273,6 +276,33 @@ dtm4 = DTM(
     final_states={"qac"},  # ,'q10'}
 )
 
+dfa5 = DFA(
+    states={'q0', 'q1', 'q2','q3','q4','q5'},
+    input_symbols={'0', '1'},
+    transitions={
+        'q0': {'0': 'q2', '1': 'q1'},
+        'q1': {'0': 'q2', '1': 'q1'},
+        'q2': {'0': 'q4', '1': 'q3'},
+        'q3': {'0': 'q4', '1': 'q3'},
+        'q4': {'0': 'q5', '1': 'q4'},
+        'q5': {'0': 'q5', '1': 'q5'}, 
+    },
+    initial_state='q0',
+    final_states={'q5'}
+)
+
+nfa6 = NFA(
+    states={'q1', 'q2', 'q3','q4'},
+    input_symbols={'1', '0'},
+    transitions={
+        'q1': {'0': {'q1'},'1':{'q1','q2'}},    # Use '' as the key name for empty string (lambda/epsilon) transitions
+        'q2': {'0': {'q3'},'':{'q3'}},
+        'q3': {'1': {'q4'}},
+        'q4': {'0':{'q4'},'1':{'q4'}}
+    },
+    initial_state='q1',
+    final_states={'q4'}
+)
 
 def input1(my_input_str):
     if npda1.accepts_input(my_input_str):
@@ -314,11 +344,24 @@ def input4(my_input_str):
     print("")
     return "Gracias"
 
+def input5(my_input_str):
+    if dfa5.accepts_input(my_input_str):
+        print("cadena aceptada")
+    else:
+        print("cadena rechazada")
+    print("")
+    return "Gracias"
 
-print(100 * "-")
-
+def input6(my_input_str):
+    if nfa6.accepts_input(my_input_str):
+        print("cadena aceptada")
+    else:
+        print("cadena rechazada")
+    print("")
+    return "Gracias"
 
 def menu():
+    
     print(100 * "-")
     print("Las máquinas disponibles son las siguientes: ")
     print(
@@ -331,6 +374,8 @@ def menu():
     print(
         "4) Máquina de Turing determinista de una cinta que computa la suma de 2 cadenas binarias, ingrese v+w"
     )
+    print("5) Automáta finito determinista que reconoce las cadenas en binario  que tienen minimo 3 0's")
+    print("6 Automáta finito no determinista que reconoce las cadenas en binario que tengan a 11 o 101 como subcadena")
     print("#)Salir del programa ")
     x = input("Ingrese la máquina que desea utilizar: ")
     if x == "#":
@@ -356,11 +401,14 @@ def menu():
         print(input4(y))
         print(100 * "-")
         menu()
+    elif x == "5":
+        print(input5(y))
+        print(100*'-')
+        menu()
     else:
         print("Error, ingrese un input válido")
         print("")
         print(100 * "-")
         menu()
-
 
 menu()
