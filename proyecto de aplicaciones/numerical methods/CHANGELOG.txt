@@ -1,5 +1,5 @@
 ==========
 
-0.2.5 (25/05/2022)
+0.2.6 (05/06/2022)
 -------------------
--Se corrigió algunos problemas para dubujar regresiones.
+-Se agregó optimizacion numerica para minimos y maximos locales

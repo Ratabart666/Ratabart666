@@ -14,10 +14,10 @@ warnings.filterwarnings("ignore")
 
 def productoria(list):
     """Ingresada una lista devuelve el producto de todos sus elementos
-        Parametros:
-            list:lista con los elementos
-        Retorno
-            Producto de todos sus elementos"""
+    Parametros:
+        list:lista con los elementos
+    Retorno
+        Producto de todos sus elementos"""
     despues = list[0]
     for i in range(1, len(list)):
         despues = despues * list[i]
@@ -26,10 +26,10 @@ def productoria(list):
 
 def sumatoria(list):
     """Ingresada una lista devuelve la suma de todos sus elementos
-        Parametros:
-            list:lista con los elementos
-        Retorno
-            Suma de todos sus elementos"""
+    Parametros:
+        list:lista con los elementos
+    Retorno
+        Suma de todos sus elementos"""
     despues = list[0]
     for i in range(1, len(list)):
         despues = despues + list[i]
@@ -38,12 +38,12 @@ def sumatoria(list):
 
 def interpolacionlagrange(x, X, Y):
     """Ingresada un valor de x, una lista de valores de X y de Y devuelve la interpolacion de lagrange evaluada en x
-        Parametros:
-            x:valor de x
-            X:valores de x
-            Y:valores de y
-        Retorno
-            Interpolacion de lagrange evaluada en x"""
+    Parametros:
+        x:valor de x
+        X:valores de x
+        Y:valores de y
+    Retorno
+        Interpolacion de lagrange evaluada en x"""
 
     coeficientes = Y
     polinomios_x = []
@@ -60,7 +60,7 @@ def interpolacionlagrange(x, X, Y):
 def derivada_numerica1(x_values, y_values, loc):
     """Ingresados los valores de x(equisdistantes),los valores de y,y la localizacion de un
         punto en x, retorna la derivada numerica en ese punto.
-    Parametros: 
+    Parametros:
         x_values: Valores equisdistantes de x(valores crecientes)
         y_values: Valores de y
         loc: localizacion en la lista del valor de x que queremos evaluar
@@ -82,7 +82,7 @@ def derivada_numerica2(x_values, loc, funcion):
     """Ingresados los valores de x,y la localizacion de un punto en x,
         retorna la derivada numerica en ese punto con h=10**-6
         Defina la funcion como funcion(x)
-    Parametros: 
+    Parametros:
         x_values: Valores de x
         loc: localizacion en la lista del valor de x que queremos evaluar
         funcion:funcion deseada
@@ -96,7 +96,7 @@ def derivada_numerica2(x_values, loc, funcion):
 def segunda_derivada_numerica1(x_values, y_values, loc):
     """Ingresados los valores de x(equisdistantes),los valores de y,y la localizacion de un
         punto en x, retorna la segunda derivada numerica en ese punto
-    Parametros: 
+    Parametros:
         x_values: Valores equisdistantes de x(valores crecientes)
         y_values: Valores de y
         loc: localizacion en la lista del valor de x que queremos evaluar
@@ -112,7 +112,7 @@ def segunda_derivada_numerica2(x_values, loc, funcion):
     """Ingresados los valores de x,y la localizacion en el
         punto en x, retorna la segunda derivada numerica en ese punto con h=10**-6
         Defina la funcion como funcion(x)
-    Parametros: 
+    Parametros:
         x_values: Valores de x
         loc: localizacion en la lista del valor de x que queremos evaluar
         funcion: funcion deseada
@@ -130,7 +130,7 @@ def segunda_derivada_numerica2(x_values, loc, funcion):
 
 def lista_derivada_numerica1(x_values, y_values):
     """Ingresados los valores de x y los valores de y, se retorna las derivadas numericas
-    Parametros: 
+    Parametros:
         x_values: Valores equisdistantes de x(valores crecientes)
         y_values: Valores de y
     Retorno:
@@ -145,7 +145,7 @@ def lista_derivada_numerica1(x_values, y_values):
 
 def lista_derivada_numerica2(x_values, funcion):
     """Ingresados los valores de x y la funcion deseada, se retorna las derivadas numericas
-    Parametros: 
+    Parametros:
         x_values: Valores equisdistantes de x(valores crecientes)
         funcion: funcion deseada
     Retorno:
@@ -160,7 +160,7 @@ def lista_derivada_numerica2(x_values, funcion):
 
 def lista_segunda_derivada_numerica1(x_values, y_values):
     """Ingresados los valores de x y los valores de y, se retorna las segundas derivadas numericas
-    Parametros: 
+    Parametros:
         x_values: Valores equisdistantes de x(valores crecientes)
         y_values: Valores de y
     Retorno:
@@ -174,7 +174,7 @@ def lista_segunda_derivada_numerica1(x_values, y_values):
 
 def lista_segunda_derivada_numerica2(x_values, funcion):
     """Ingresados los valores de x y la función, retorna lista de las segundas derivadas numericas
-    Parametros: 
+    Parametros:
         x_values: Valores equisdistantes de x(valores crecientes)
         funcion: funcion deseada
     Retorno:
@@ -189,10 +189,10 @@ def lista_segunda_derivada_numerica2(x_values, funcion):
 def newton_raphson_derivada_conocida(x0, funcion, derivada):
     """Ingresados los valores de x0, la funcion y la derivada
         retorna la solucion numerica, porfavor verifique que la funcion no cambie de
-        concavidad y la derivada sea diferente de 0 en el intervalo de convergencia, y asegure un intervalo de convergencia; 
+        concavidad y la derivada sea diferente de 0 en el intervalo de convergencia, y asegure un intervalo de convergencia;
         de lo contrario el programa puede no funcionar(Puede asegurar el intervalo gráficamente).
         Defina la funcion como f(x).
-    Parametros: 
+    Parametros:
         x0: valor inicial
         función: función
         derivada: derivada
@@ -213,31 +213,29 @@ def newton_raphson_derivada_desconocida(x0, funcion):
         retorna la solucion numerica(En caso que la derivada sea complicada), porfavor verifique que la funcion no cambie de
         concavidad y la derivada sea diferente de 0 en el intervalo de convergencia, y asegure un intervalo de convergencia; de lo contrario el programa puede no funcionar(Puede asegurar el intervalo gráficamente).
         Defina la funcion como f(x).
-    Parametros: 
+    Parametros:
         x0: valor inicial
         funcion: función conocida.
     Retorno:
         Solucion numerica newton-raphson
     """
     xantes = x0
-    xdespues = x0 - (funcion(xantes) /
-                     derivada_numerica2([xantes], 0, funcion))
+    xdespues = x0 - (funcion(xantes) / derivada_numerica2([xantes], 0, funcion))
     while (xdespues - xantes) / xantes < 10e-6:
         xantes = xdespues
-        xdespues = xantes - (funcion(xantes) /
-                             derivada_numerica2([xantes], 0, funcion))
+        xdespues = xantes - (funcion(xantes) / derivada_numerica2([xantes], 0, funcion))
     return xdespues
 
 
 def integral_riemann(f, a, b):
     """Ingresada la funcion, los limites de integracion(1000 particiones) devuelve la integral numerica(riemann) aproximada
-        Parametros:
-            f:funcion
-            a: intervalo inferior
-            b: intervalo superior
-            n: numero de intervalos
-       Retorno
-           Devuelve la integral numerica(riemann)"""
+     Parametros:
+         f:funcion
+         a: intervalo inferior
+         b: intervalo superior
+         n: numero de intervalos
+    Retorno
+        Devuelve la integral numerica(riemann)"""
     Δx = (b - a) / 1000
     I = 0
     for i in range(0, 1000):
@@ -248,13 +246,13 @@ def integral_riemann(f, a, b):
 
 def integral_trapecio(f, a, b):
     """Ingresada la funcion, los limites de integracion(1000 particiones) devuelve la integral numerica(trapecio) aproximada
-        Parametros:
-            f:funcion
-            a: intervalo inferior
-            b: intervalo superior
-            n: numero de intervalos
-       Retorno
-           Devuelve la integral numerica(trapecio)"""
+     Parametros:
+         f:funcion
+         a: intervalo inferior
+         b: intervalo superior
+         n: numero de intervalos
+    Retorno
+        Devuelve la integral numerica(trapecio)"""
     Δx = (b - a) / 1000
     yi = f(a)
     yf = f(b)
@@ -270,13 +268,13 @@ def integral_trapecio(f, a, b):
 
 def intregral_gauss_legendre(funcion, a, b):
     """Ingresada la funcion, los limites de integracion(1000 particiones) devuelve la integral numerica(gauss legendre) aproximada
-        Parametros:
-            f:funcion
-            a: intervalo inferior
-            b: intervalo superior
-            n: numero de intervalos
-       Retorno
-           Devuelve la integral numerica(gauss legendre)"""
+     Parametros:
+         f:funcion
+         a: intervalo inferior
+         b: intervalo superior
+         n: numero de intervalos
+    Retorno
+        Devuelve la integral numerica(gauss legendre)"""
 
     x, integral = 0, 0
     raices, pesos = roots_legendre(1000)
@@ -289,13 +287,13 @@ def intregral_gauss_legendre(funcion, a, b):
 
 def integral_riemann_funciondes(X, Y, loc1, loc2):
     """Ingresada una serie de datos, los limites de integracion(1000 particiones) devuelve la integral numerica(riemann) aproximada(No elija como intervalo superior el ultimo datos en X)
-        Parametros:
-            X:valores de x 
-            Y: valores de y
-            loc1: intervalo inferior
-            loc2: intervalo superior
-       Retorno
-           Devuelve la integral numerica(riemann)"""
+     Parametros:
+         X:valores de x
+         Y: valores de y
+         loc1: intervalo inferior
+         loc2: intervalo superior
+    Retorno
+        Devuelve la integral numerica(riemann)"""
     Δx = None
     I = 0
     for i in range(loc1, loc2):
@@ -306,13 +304,13 @@ def integral_riemann_funciondes(X, Y, loc1, loc2):
 
 def integral_trapecio_funciondes(X, Y, loc1, loc2):
     """Ingresada una serie de datos, los limites de integracion(1000 particiones) devuelve la integral numerica(trapecio) aproximada(No elija como intervalo superior el ultimo datos en X)
-        Parametros:
-            X:valores de x 
-            Y: valores de y
-            loc1: intervalo inferior
-            loc2: intervalo superior
-       Retorno
-           Devuelve la integral numerica(trapecio)"""
+     Parametros:
+         X:valores de x
+         Y: valores de y
+         loc1: intervalo inferior
+         loc2: intervalo superior
+    Retorno
+        Devuelve la integral numerica(trapecio)"""
     Δx = None
     I = 0
     aux = 0
@@ -326,7 +324,7 @@ def integral_trapecio_funciondes(X, Y, loc1, loc2):
 def matriz_vacia(n, m):
     """Ingresados los valores deseados de columnas y filas
         retorna una matriz vacía de nxm
-    Parametros: 
+    Parametros:
         n: numero de filas
         m: numero de columnas
     Retorno:
@@ -343,10 +341,10 @@ def matriz_vacia(n, m):
 
 def vector_vacio(n):
     """Dado un numero n, devuelve con un vector de dimension n con todas las entradas iguales a 0
-        Parametros:
-            n: numero de entradas
-        Retorno:
-           Vector: con n entradas y entradas iguales a 0"""
+    Parametros:
+        n: numero de entradas
+    Retorno:
+       Vector: con n entradas y entradas iguales a 0"""
     aux = []
     for i in range(n):
         aux.append(0)
@@ -354,8 +352,7 @@ def vector_vacio(n):
 
 
 def print_matriz(matriz):
-    """Imprime la matriz de manera organizada
-    """
+    """Imprime la matriz de manera organizada"""
     aux = matriz_vacia(len(matriz), len(matriz[0]))
     for i in range(len(matriz)):
         for j in range(len(matriz[0])):
@@ -369,7 +366,7 @@ def print_matriz(matriz):
 def columnaj(matriz, j):
     """Ingresados la columna deseada
         retorna esta columna
-    Parametros: 
+    Parametros:
         matriz: matriz deseada
         m: columna deseada(la primera columna es 0)
     Retorno:
@@ -384,7 +381,7 @@ def columnaj(matriz, j):
 def auxproducto(vector1, vector2):
     """Ingresados 2 vectores
         retorna su producto punto
-    Parametros: 
+    Parametros:
         vector1: vector 2
         vector2: vector 1
     Retorno:
@@ -399,7 +396,7 @@ def auxproducto(vector1, vector2):
 def suma(matriz1, matriz2):
     """Ingresados 2 Matrices
         retorna su suma
-    Parametros: 
+    Parametros:
         matriz1: Matriz 2
         matriz2: Matriz 1
     Retorno:
@@ -415,8 +412,8 @@ def suma(matriz1, matriz2):
 def escalarmatriz(matriz, c):
     """Ingresados 1 Matriz y un escalar
         retorna el producto
-    Parametros: 
-        matriz1: Matriz 
+    Parametros:
+        matriz1: Matriz
         c: Escalar
     Retorno:
         Retorna c*Matriz 1
@@ -431,7 +428,7 @@ def escalarmatriz(matriz, c):
 def resta(matriz1, matriz2):
     """Ingresados 2 Matrices
         retorna su resta
-    Parametros: 
+    Parametros:
         matriz1: Matriz 1
         matriz2: Matriz 2
     Retorno:
@@ -443,7 +440,7 @@ def resta(matriz1, matriz2):
 def producto(matriz1, matriz2):
     """Ingresados 2 Matrices
         retorna su producto
-    Parametros: 
+    Parametros:
         matriz1: Matriz 1
         matriz2: Matriz 2
     Retorno:
@@ -472,15 +469,14 @@ def producto(matriz1, matriz2):
         producto = matriz_vacia(len(matriz1), len(matriz2[0]))
         for i in range(0, len(matriz1)):
             for j in range(0, len(matriz2[0])):
-                producto[i][j] = auxproducto(
-                    matriz1[i], columnaj(matriz2, j)[0])
+                producto[i][j] = auxproducto(matriz1[i], columnaj(matriz2, j)[0])
         return producto
 
 
 def eliminarfilai(matriz, i):
-    """Ingresados 1 Matriz y una fila 
+    """Ingresados 1 Matriz y una fila
         retorna la matriz sin la fila
-    Parametros: 
+    Parametros:
         matriz1: Matriz 1
         i: Fila deseada(la primera fila es 0)
     Retorno:
@@ -493,7 +489,7 @@ def eliminarfilai(matriz, i):
 def eliminarcolumnaj(matriz, j):
     """Ingresados 1 Matriz y una columna
         retorna la matriz sin la columna
-    Parametros: 
+    Parametros:
         matriz1: Matriz 1
         j: Columna deseada(la primera columna es 0)
     Retorno:
@@ -509,7 +505,7 @@ def eliminarcolumnaj(matriz, j):
 def eliminar_filai_columnaj(matriz, i, j):
     """Ingresados 1 Matriz,una fila y una columna
         retorna la matriz sin la fila y la columna
-    Parametros: 
+    Parametros:
         matriz1: Matriz 1
         i: Fila deseada (la primera fila es 0)
         j: Columna deseada (la primera columna es 0)
@@ -523,10 +519,10 @@ def eliminar_filai_columnaj(matriz, i, j):
 
 def transpuesta(A):
     """Ingresada una matriz,devuelve su transpuesta
-        Parametros:
-            A: Matriz
-        Retorno
-            Matriz transpuesta"""
+    Parametros:
+        A: Matriz
+    Retorno
+        Matriz transpuesta"""
     B = matriz_vacia(len(A[0]), len(A))
     for i in range(len(A)):
         for j in range(len(A[0])):
@@ -536,24 +532,24 @@ def transpuesta(A):
 
 def magnitud_vector(vector):
     """Dado un vector retorna su norma
-        Parametros:
-            vector: vector
-        Retorno
-            Norma del vector"""
+    Parametros:
+        vector: vector
+    Retorno
+        Norma del vector"""
     vector = vector[0]
     norma = 0
     for i in vector:
-        norma += i ** 2
+        norma += i**2
     return (norma) ** (1 / 2)
 
 
 def angulo_vectores(vector1, vector2):
     """Dado 2 vectores, devuelve el angulo entre ellos
-        Parametros:
-            vector1: vector
-            vector 2: vector
-        Retorno:
-            Angulo entre ellos(grados)"""
+    Parametros:
+        vector1: vector
+        vector 2: vector
+    Retorno:
+        Angulo entre ellos(grados)"""
     costetha = (producto(vector1, vector2)) / (
         magnitud_vector(vector1) * magnitud_vector(vector2)
     )
@@ -563,10 +559,10 @@ def angulo_vectores(vector1, vector2):
 
 def indmaxarg(vector):
     """Dado un vector retorna el indice con mayor valor
-        Parametros:
-            vector: vector
-        Retorno
-            Indice con mayor valor(el primer indice es 0)"""
+    Parametros:
+        vector: vector
+    Retorno
+        Indice con mayor valor(el primer indice es 0)"""
     maxi = max(vector[0])
     for i in range(len(vector[0])):
         if vector[0][i] == maxi:
@@ -591,10 +587,10 @@ def aux_triangular(A):
 
 def triangular_superior(A):
     """Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular superior, no debe haber 0's en la diagonal
-        Parametros:
-            A:matriz
-        Retorno:
-            Matriz en forma triangular superior"""
+    Parametros:
+        A:matriz
+    Retorno:
+        Matriz en forma triangular superior"""
     B, d = aux_triangular(A)
     rows = len(A)
     aux = None
@@ -607,10 +603,10 @@ def triangular_superior(A):
 
 def triangular_inferior(A):
     """Dada una matriz A(cuadrada), la transforma mediante o.e.f a una matriz triangular inferior
-        Parametros:
-            A:matriz
-        Retorno:
-            Matriz en forma triangular inferior"""
+    Parametros:
+        A:matriz
+    Retorno:
+        Matriz en forma triangular inferior"""
     B, d = aux_triangular(A)
     n = len(A)
     for i in range(n - 1, -1, -1):
@@ -636,12 +632,12 @@ def diagonal(A):
 
 def red_gauss(A):
     """Dada una matriz A que representa un sistema de ecuaciones lineales,aplica el algoritmo de reduccion de gauss
-        primero la convierte en una matriz triangular superior y despues en una matriz diagonal donde las soluciones son explicitas
-        (La matriz debe tener tamano nx(n+1))
-        Parametros:
-            A:matriz
-        Retorno:
-            Solucion sistemas de ecuaciones lineales"""
+    primero la convierte en una matriz triangular superior y despues en una matriz diagonal donde las soluciones son explicitas
+    (La matriz debe tener tamano nx(n+1))
+    Parametros:
+        A:matriz
+    Retorno:
+        Solucion sistemas de ecuaciones lineales"""
     B, d = diagonal(A)
     for i in range(len(B)):
         B[i] = escalarmatriz([B[i]], 1 / (B[i][i]))[0]
@@ -667,10 +663,10 @@ def matriz_aum_id(A):
 
 def inversa(A):
     """Dada una matriz cuadrada A, retorna su inversa
-      Parametros:
-          A: matriz
-      Retorno:
-          matriz inversa"""
+    Parametros:
+        A: matriz
+    Retorno:
+        matriz inversa"""
     if len(A) == 1 and len(A[0]) == 1:
         return [[1 / A[0][0]]]
     B = matriz_aum_id(A)
@@ -689,10 +685,10 @@ def diagonales(A):
 
 def determinante(matriz):
     """Dada una matriz cuadrada A,retorna su determinante
-        Parametros:
-            A: matriz
-        Retorno
-            determinante de A"""
+    Parametros:
+        A: matriz
+    Retorno
+        determinante de A"""
     A, d = diagonal(matriz)
     aux = diagonales(A)
     return round(productoria(aux[0]) * ((-1) ** d), 6)
@@ -700,12 +696,12 @@ def determinante(matriz):
 
 def remplazarcolumnaj(matriz, j, vector):
     """Dada una matriz, su columna y un vector, remplaza la columna por el vector dado
-        Parametros:
-            matriz: matriz
-            j: columna(primera columna 0)
-            vector: vector que se desea remplazar
-        Retorno:
-            matriz con el elemento remplazado"""
+    Parametros:
+        matriz: matriz
+        j: columna(primera columna 0)
+        vector: vector que se desea remplazar
+    Retorno:
+        matriz con el elemento remplazado"""
     for i in range(len(matriz)):
         matriz[i][j] = vector[0][i]
     return matriz
@@ -713,13 +709,13 @@ def remplazarcolumnaj(matriz, j, vector):
 
 def remplazar_posicion(matriz, i, j, c):
     """Dada una matriz,y la posición i,j ; remplaza la columna por el vector dado
-        Parametros:
-            matriz: matriz
-            j: columna(primera columna 0)
-            i: fila(primera fila 0)
-            c:valor a remplazar
-        Retorno:
-            matriz con el elemento remplazado"""
+    Parametros:
+        matriz: matriz
+        j: columna(primera columna 0)
+        i: fila(primera fila 0)
+        c:valor a remplazar
+    Retorno:
+        matriz con el elemento remplazado"""
     for k in range(len(matriz)):
         for m in range(len(matriz[0])):
             if k == i and m == j:
@@ -741,10 +737,10 @@ def normalizar(vector1):
 
 def calcula_qj(Q, aj, j, n):
     """Funcion auxiliar que calcula el vector ortonormal qj, no es de utilidad solo es una funcion auxiliar de gram_schmidt
-  Q=matriz
-  aj=vectorj
-  n=columnasQ(desde0)
- """
+    Q=matriz
+    aj=vectorj
+    n=columnasQ(desde0)
+    """
     sigma = vector_vacio(n)
     for i in range(j):
         sigma = suma(sigma, proyeccion(aj, columnaj(Q, i)))
@@ -752,11 +748,11 @@ def calcula_qj(Q, aj, j, n):
 
 
 def gram_schmidt(A):
-    """ Dada una matriz cuadrada, cuyas columnas son bases para R**n, devuelve una matriz ortogonal a traves del proceso de ortonormalizacion de gram-schmidt
-      Parametros:
-          A: matriz
-      Retorno:
-          matriz ortogonal"""
+    """Dada una matriz cuadrada, cuyas columnas son bases para R**n, devuelve una matriz ortogonal a traves del proceso de ortonormalizacion de gram-schmidt
+    Parametros:
+        A: matriz
+    Retorno:
+        matriz ortogonal"""
     columns = len(A[0])
     Q = matriz_vacia(len(A), len(A[0]))
     Q = remplazarcolumnaj(Q, 0, calcula_qj(Q, columnaj(A, 0), 0, columns))
@@ -777,11 +773,11 @@ def factorizacionQR(A):
 
 def valores_propios_algoritmo_QR(A):
     """Dada una matriz cuadrada,se itera 100 veces, el algoritmo devuelve los valores propios a traves del algoritmo qr
-      Parametros:
-          A:matriz
-          iteraciones: iteraciones del algoritmo
-      Retorno:
-          valores propios(reales) aproximados"""
+    Parametros:
+        A:matriz
+        iteraciones: iteraciones del algoritmo
+    Retorno:
+        valores propios(reales) aproximados"""
     Ak = A
     for k in range(1000):
         Qk = gram_schmidt(Ak)
@@ -791,10 +787,10 @@ def valores_propios_algoritmo_QR(A):
 
 def metodo_de_potencias(A):
     """Dada una matriz cuadrada,se calcula el autovector de mayor autovalor
-      Parametros:
-          A:matriz
-      Retorno:
-          autovector con mayor autovalor"""
+    Parametros:
+        A:matriz
+    Retorno:
+        autovector con mayor autovalor"""
     x = vector_vacio(len(A[0]))
     x2 = None
     for i in range(len(x[0])):
@@ -818,14 +814,14 @@ def apro_mayor_valor_propio(A, v_prop):
 
 
 def E_fila_c(n, k, c):
-    """Dado una dimensión, retorna la matriz elemental E de nxn asociada a multiplicar un 
+    """Dado una dimensión, retorna la matriz elemental E de nxn asociada a multiplicar un
     escalar  c por la fila k de una matriz A de nxm
     Parametros:
         n:dimensión matriz elemental
         k:fila por la que se multiplica el escalar(empieza por la fila 0)
         c:escalar
     Retorno:
-        matriz elemental E de nxn asociada a multiplicar un 
+        matriz elemental E de nxn asociada a multiplicar un
         escalar c por la fila k de una matriz A de nxm"""
     A = matriz_vacia(n, n)
     for i in range(n):
@@ -836,6 +832,7 @@ def E_fila_c(n, k, c):
 
 
 # http://www1.monografias.com/docs115/regresion-lineal-multiple/regresion-lineal-multiple2.shtml
+
 
 def regresion1(x, y, grado, tupla):
     columnas = 0
@@ -876,7 +873,7 @@ def regresion(x, y, grado, tupla):
        tupla: tupla que indica que coeficientes queremos diferentes de cero, ajuste(x**2+1)-> tupla=(1,0,1)(ascendente)
     Retorno
         Retorna los coeficientes de mayor a menor, la incertidumbre y el coeficiente de correlacion
-        """
+    """
     columnas = 0
     aux = []
     for i in range(len(tupla)):
@@ -920,7 +917,7 @@ def aux_regresion(x, y, grado, tupla):
        tupla: tupla que indica que coeficientes queremos diferentes de cero, ajuste(x**2+1)-> tupla=(1,0,1)(ascendente)
     Retorno
         Retorna los datos de y ajustados a x
-        """
+    """
     ajuste = regresion(x, y, grado, tupla)
     parametros = ajuste[0][::-1]
     x = np.array((np.linspace(min(x), max(x)), 1000))[0]
@@ -940,7 +937,9 @@ def aux_regresion(x, y, grado, tupla):
     return result
 
 
-def dibujo_reg(x, y, grado, tupla, fila, columna, nombre, nombrex, nombrey, label, ax, aux, aux2):
+def dibujo_reg(
+    x, y, grado, tupla, fila, columna, nombre, nombrex, nombrey, label, ax, aux, aux2
+):
     """Ingresados valores de x,y y el grado del polinomio para la regresión,retorna los datos ploteados en 2 dimensiones
     se compara experimento con ajuste, ( se debe antes crear el plano)
     si no cola subplot fila=columna=0, importe matplotlib
@@ -1058,7 +1057,7 @@ def aux_regresionlin(x, y):
        tupla: tupla que indica que coeficientes queremos diferentes de cero, ajuste(x**2+1)-> tupla=(1,0,1)(ascendente)
     Retorno
         Retorna los datos de y ajustados a x
-        """
+    """
     ajuste = regresionlineal(x, y)
     parametros = ajuste[0][::-1]
     x = np.array((np.linspace(min(x), max(x)), 1000))[0]
@@ -1075,7 +1074,9 @@ def aux_regresionlin(x, y):
     return result
 
 
-def dibujo_reglineal(x, y, fila, columna, nombre, nombrex, nombrey, ax, label, aux, aux2):
+def dibujo_reglineal(
+    x, y, fila, columna, nombre, nombrex, nombrey, ax, label, aux, aux2
+):
     """Ingresados valores de x,y y el grado del polinomio para la regresión,retorna los datos ploteados en 2 dimensiones
     se compara experimento con ajuste, ( se debe antes crear el plano)
     si no cola subplot fila=columna=0, importe matplotlib
@@ -1146,3 +1147,130 @@ def dibujo_reglineal(x, y, fila, columna, nombre, nombrex, nombrey, ax, label, a
         ax[columna].legend()
         ax[columna].legend()
         ax[columna].legend()
+
+
+def discriminar(x, y):
+    for i in x:
+        if abs((i - y) / y) < 0.1:
+            z = False
+            return x
+    return x.append(y)
+
+
+def max_optimizacion(xValues, yValues, max_maximos, m):
+    """Ingresados los valores de x, el número de maximos deseados y el valor absoluto minimo de la pendiente para un maximo
+    retorna si se cumplen las condiciones para los minimos. Recuerdo que es un maximo local
+    Parametros:
+    xValues: Valores de x's
+    yValues: Valores de y's
+    max_min: numero maximo de maximos"""
+
+    listaDerivadas = lista_derivada_numerica1(xValues, yValues)
+
+    dictDiccionario = {}
+    i = 0
+
+    for der in listaDerivadas:
+        dictDiccionario[der] = i
+
+        i += 1
+
+    listaDerivadas = abs(np.array(listaDerivadas)).tolist()
+    listaDerivadas.sort(reverse=False)
+    listaSegundasDerivadas = lista_segunda_derivada_numerica1(xValues, yValues)
+    count = 0
+    best = []
+    aux = None
+    aux2 = None
+    for i in range(len(listaDerivadas)):
+        try:
+            try:
+                if (
+                    listaSegundasDerivadas[dictDiccionario[listaDerivadas[i]]] < 0
+                    and abs(listaDerivadas[i]) < m
+                ):
+                    aux = dictDiccionario[listaDerivadas[i]]
+                    aux2 = len(best)
+                    discriminar(best, xValues[aux])
+                    if aux2 != len(best):
+                        count += 1
+                        if count == max_maximos:
+                            break
+
+            except:
+                if (
+                    listaSegundasDerivadas[dictDiccionario[-1 * listaDerivadas[i]]] < 0
+                    and abs(listaDerivadas[i]) < m
+                ):
+                    aux = dictDiccionario[-1 * listaDerivadas[i]]
+                    aux2 = len(best)
+                    discriminar(best, xValues[aux])
+                    if aux2 != len(best):
+                        count += 1
+                        if count == max_maximos:
+                            break
+        except:
+            count = count
+
+    best.sort(reverse=False)
+    return best
+
+
+def min_optimizacion(xValues, yValues, max_min, m):
+    """Ingresados los valores de x, el número de minimos deseados y el valor absoluto minimo de la pendiente para un minimo
+    retorna si se cumplen las condiciones para los minimos. Recuerde que son minimos locales
+    Parametros:
+    xValues: Valores de x's
+    yValues: Valores de y's
+    max_min: máximos numero de minimos
+    m: Valor maximo que debe tener la pendiente en el minimo"""
+
+    listaDerivadas = lista_derivada_numerica1(xValues, yValues)
+
+    dictDiccionario = {}
+    i = 0
+
+    for der in listaDerivadas:
+        dictDiccionario[der] = i
+
+        i += 1
+
+    listaDerivadas = abs(np.array(listaDerivadas)).tolist()
+    listaDerivadas.sort(reverse=False)
+    listaSegundasDerivadas = lista_segunda_derivada_numerica1(xValues, yValues)
+    count = 0
+    best = []
+    aux = None
+    aux2 = None
+    for i in range(len(listaDerivadas)):
+        try:
+            try:
+                if (
+                    listaSegundasDerivadas[dictDiccionario[listaDerivadas[i]]] > 0
+                    and abs(listaDerivadas[i]) < m
+                ):
+                    aux = dictDiccionario[listaDerivadas[i]]
+                    aux2 = len(best)
+                    discriminar(best, xValues[aux])
+                    if aux2 != len(best):
+                        count += 1
+                        if count == max_min:
+                            break
+
+            except:
+                if (
+                    listaSegundasDerivadas[dictDiccionario[-1 * listaDerivadas[i]]] > 0
+                    and abs(listaDerivadas[i]) < m
+                ):
+                    aux = dictDiccionario[-1 * listaDerivadas[i]]
+                    aux2 = len(best)
+                    discriminar(best, xValues[aux])
+                    if aux2 != len(best):
+                        count += 1
+                        if count == max_min:
+                            break
+        except:
+            count = count
+
+    best.sort(reverse=False)
+    return best
