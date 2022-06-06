@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Algoritmosnumericos
-Version: 0.2.6
+Version: 0.2.7
 Summary: maths algorithms and util funtion for plot numerical methods
 Home-page: https://github.com/Ratabart666
 Author: Thomas Gomez
@@ -14,7 +14,7 @@ Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3
 License-File: LICENCE.txt
 
-Numerical Algorithms 0.2.5
+Numerical Algorithms 0.2.7
 
 This library have very strongs Algorithms
 you should import as follow import Algoritmosnumericos as Alg
@@ -23,6 +23,6 @@ and if you wish to know  the funtions only write (help(Alg))
 
 ==========
 
-0.2.6 (05/06/2022)
+0.2.7 (05/06/2022)
 -------------------
--Se agregÃ³ optimizacion numerica para minimos y maximos locales
+-Se agrego optimizacion numerica, algunas funciones estadisticas e integracion por montecarlo
