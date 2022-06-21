@@ -374,7 +374,7 @@ def menu():
         "4) Máquina de Turing determinista de una cinta que computa la suma de 2 cadenas binarias, ingrese v+w"
     )
     print("5) Automáta finito determinista que reconoce las cadenas en binario  que tienen minimo 3 0's")
-    print("6 Automáta finito no determinista que reconoce las cadenas en binario que tengan a 11 o 101 como subcadena")
+    print("6) Automáta finito no determinista que reconoce las cadenas en binario que tengan a 11 o 101 como subcadena")
     print("#)Salir del programa ")
     x = input("Ingrese la máquina que desea utilizar: ")
     if x == "#":
