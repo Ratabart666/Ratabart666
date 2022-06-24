@@ -1,4 +1,4 @@
-Numerical Algorithms 0.2.7
+Numerical Algorithms 0.3.0
 
 This library have very strongs Algorithms
 you should import as follow import Algoritmosnumericos as Alg

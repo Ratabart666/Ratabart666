@@ -1,1 +1,0 @@
-python consola_feria.py

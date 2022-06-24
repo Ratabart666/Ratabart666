@@ -1,1 +1,0 @@
-python consola_laboratorio_1.py
